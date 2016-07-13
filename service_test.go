@@ -4,14 +4,15 @@
 
 package service_test
 
-/*
 import (
-	"testing"
-	"time"
-
+	/*
+		"testing"
+		"time"
+	*/
 	"github.com/kardianos/service"
 )
 
+/*
 func TestRunInterrupt(t *testing.T) {
 	p := &program{}
 	sc := &service.Config{
