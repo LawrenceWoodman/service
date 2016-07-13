@@ -40,6 +40,7 @@ func TestRunInterrupt(t *testing.T) {
 		t.Fatalf("Run() err: %s", err)
 	}
 }
+*/
 
 type program struct {
 	numStopped int
@@ -56,4 +57,3 @@ func (p *program) Stop(s service.Service) error {
 	p.numStopped++
 	return nil
 }
-*/
