@@ -246,7 +246,6 @@ func (ws *windowsService) Uninstall() error {
 
 func (ws *windowsService) Run() error {
 	ws.setError(nil)
-	fmt.Printf("windowsService Run() - interactive: %t\n", interactive)
 	if !interactive {
 		// Return error messages from start and stop routines
 		// that get executed in the Execute method.
@@ -254,8 +253,6 @@ func (ws *windowsService) Run() error {
 		// (callback from windows).
 		runErr := svc.Run(ws.Name, ws)
 		startStopErr := ws.getError()
-		fmt.Printf("windowsService Run() - svc.Run() runErr: %s, startStopErr: %s\n",
-			runErr, startStopErr)
 		if startStopErr != nil {
 			return startStopErr
 		}
@@ -268,18 +265,13 @@ func (ws *windowsService) Run() error {
 	if err != nil {
 		return err
 	}
-	fmt.Printf("windowsService Run() - before make chan\n")
 
 	sigChan := make(chan os.Signal)
 	defer close(sigChan)
 
-	fmt.Printf("windowsService Run() - before notify\n")
 	signal.Notify(sigChan, os.Interrupt, os.Kill)
-
-	fmt.Printf("windowsService Run() - before <-sigChan\n")
 	<-sigChan
 
-	fmt.Printf("windowsService Run() - before Stop\n")
 	return ws.i.Stop(ws)
 }
 

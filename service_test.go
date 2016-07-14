@@ -5,9 +5,10 @@
 package service_test
 
 import (
-	"github.com/kardianos/service"
 	"testing"
 	"time"
+
+	"github.com/kardianos/service"
 )
 
 func TestRunInterrupt(t *testing.T) {
