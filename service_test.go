@@ -5,14 +5,11 @@
 package service_test
 
 import (
-	/*
-		"testing"
-		"time"
-	*/
 	"github.com/kardianos/service"
+	"testing"
+	"time"
 )
 
-/*
 func TestRunInterrupt(t *testing.T) {
 	p := &program{}
 	sc := &service.Config{
@@ -41,7 +38,6 @@ func TestRunInterrupt(t *testing.T) {
 		t.Fatalf("Run() err: %s", err)
 	}
 }
-*/
 
 type program struct {
 	numStopped int
