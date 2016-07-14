@@ -271,6 +271,7 @@ func (ws *windowsService) Run() error {
 	fmt.Printf("windowsService Run() - before make chan\n")
 
 	sigChan := make(chan os.Signal)
+	defer close(sigChan)
 
 	fmt.Printf("windowsService Run() - before notify\n")
 	signal.Notify(sigChan, os.Interrupt, os.Kill)
