@@ -267,10 +267,11 @@ func (ws *windowsService) Run() error {
 	}
 
 	sigChan := make(chan os.Signal, 2)
-	defer close(sigChan)
 
 	signal.Notify(sigChan, os.Interrupt, os.Kill)
 	<-sigChan
+	signal.Stop(sigChan)
+	close(sigChan)
 
 	return ws.i.Stop(ws)
 }
